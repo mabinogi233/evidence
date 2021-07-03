@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.evidence.identifyModule.database.mapper.identifyProvideMapper">
+  <resultMap id="BaseResultMap" type="com.project.evidence.identifyModule.database.entity.identifyProvide">
+    <id column="QID" jdbcType="INTEGER" property="qid" />
+    <result column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="identifyText" jdbcType="VARCHAR" property="identifytext" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    QID, JID, identifyText
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from identifyprovide
+    where QID = #{qid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from identifyprovide
+    where QID = #{qid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.evidence.identifyModule.database.entity.identifyProvide">
+    insert into identifyprovide (QID, JID, identifyText
+      )
+    values (#{qid,jdbcType=INTEGER}, #{jid,jdbcType=INTEGER}, #{identifytext,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.evidence.identifyModule.database.entity.identifyProvide">
+    insert into identifyprovide
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="qid != null">
+        QID,
+      </if>
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="identifytext != null">
+        identifyText,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="identifytext != null">
+        #{identifytext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.evidence.identifyModule.database.entity.identifyProvide">
+    update identifyprovide
+    <set>
+      <if test="jid != null">
+        JID = #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="identifytext != null">
+        identifyText = #{identifytext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where QID = #{qid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.evidence.identifyModule.database.entity.identifyProvide">
+    update identifyprovide
+    set JID = #{jid,jdbcType=INTEGER},
+      identifyText = #{identifytext,jdbcType=VARCHAR}
+    where QID = #{qid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByJid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from identifyprovide where JID = #{jid,jdbcType=INTEGER}
+  </select>
+
+  <select id="maxId" resultType="java.lang.Integer">
+    select max(QID) from identifyprovide
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from identifyprovide
+  </select>
+</mapper>

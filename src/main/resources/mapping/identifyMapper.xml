@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.evidence.identifyModule.database.mapper.identifyMapper">
+  <resultMap id="BaseResultMap" type="com.project.evidence.identifyModule.database.entity.identify">
+    <id column="BID" jdbcType="INTEGER" property="bid" />
+    <result column="WID" jdbcType="INTEGER" property="wid" />
+    <result column="submitDate" jdbcType="TIMESTAMP" property="submitdate" />
+    <result column="UID" jdbcType="INTEGER" property="uid" />
+    <result column="QID" jdbcType="INTEGER" property="qid" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BID, WID, submitDate, UID, QID, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from identify
+    where BID = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from identify
+    where BID = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.evidence.identifyModule.database.entity.identify">
+    insert into identify (BID, WID, submitDate, 
+      UID, QID, state)
+    values (#{bid,jdbcType=INTEGER}, #{wid,jdbcType=INTEGER}, #{submitdate,jdbcType=TIMESTAMP}, 
+      #{uid,jdbcType=INTEGER}, #{qid,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.evidence.identifyModule.database.entity.identify">
+    insert into identify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        BID,
+      </if>
+      <if test="wid != null">
+        WID,
+      </if>
+      <if test="submitdate != null">
+        submitDate,
+      </if>
+      <if test="uid != null">
+        UID,
+      </if>
+      <if test="qid != null">
+        QID,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="submitdate != null">
+        #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.evidence.identifyModule.database.entity.identify">
+    update identify
+    <set>
+      <if test="wid != null">
+        WID = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="submitdate != null">
+        submitDate = #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uid != null">
+        UID = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="qid != null">
+        QID = #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BID = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.evidence.identifyModule.database.entity.identify">
+    update identify
+    set WID = #{wid,jdbcType=INTEGER},
+      submitDate = #{submitdate,jdbcType=TIMESTAMP},
+      UID = #{uid,jdbcType=INTEGER},
+      QID = #{qid,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR}
+    where BID = #{bid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByWid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from identify where WID = #{wid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from identify where UID = #{uid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByQid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from identify where QID = #{qid,jdbcType=INTEGER}
+  </select>
+
+  <select id="maxId" resultType="java.lang.Integer">
+    select max(BID) from identify
+  </select>
+
+</mapper>

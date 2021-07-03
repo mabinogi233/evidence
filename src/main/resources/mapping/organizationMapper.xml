@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.evidence.organizationModule.database.mapper.organizationMapper">
+  <resultMap id="BaseResultMap" type="com.project.evidence.organizationModule.database.entity.organization">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="Jname" jdbcType="VARCHAR" property="jname" />
+    <result column="Jtext" jdbcType="VARCHAR" property="jtext" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, Jname, Jtext
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where JID = #{jid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from organization
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.evidence.organizationModule.database.entity.organization">
+    insert into organization (JID, Jname, Jtext
+      )
+    values (#{jid,jdbcType=INTEGER}, #{jname,jdbcType=VARCHAR}, #{jtext,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.evidence.organizationModule.database.entity.organization">
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jname != null">
+        Jname,
+      </if>
+      <if test="jtext != null">
+        Jtext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jname != null">
+        #{jname,jdbcType=VARCHAR},
+      </if>
+      <if test="jtext != null">
+        #{jtext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.evidence.organizationModule.database.entity.organization">
+    update organization
+    <set>
+      <if test="jname != null">
+        Jname = #{jname,jdbcType=VARCHAR},
+      </if>
+      <if test="jtext != null">
+        Jtext = #{jtext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.evidence.organizationModule.database.entity.organization">
+    update organization
+    set Jname = #{jname,jdbcType=VARCHAR},
+      Jtext = #{jtext,jdbcType=VARCHAR}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByJName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from organization where Jname like #{JName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from organization
+  </select>
+
+  <select id="maxId" resultType="java.lang.Integer">
+    select max(JID) from organization
+  </select>
+
+</mapper>

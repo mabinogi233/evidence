@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.evidence.loginModule.database.mapper.tokenMapper">
+  <resultMap id="BaseResultMap" type="com.project.evidence.loginModule.database.entity.token">
+    <id column="UID" jdbcType="INTEGER" property="uid" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="reftoken" jdbcType="VARCHAR" property="reftoken" />
+    <result column="tokenGetTime" jdbcType="TIMESTAMP" property="tokengettime" />
+    <result column="tokenDeadTime" jdbcType="TIMESTAMP" property="tokendeadtime" />
+    <result column="reftokenDeadTime" jdbcType="TIMESTAMP" property="reftokendeadtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UID, token, reftoken, tokenGetTime, tokenDeadTime, reftokenDeadTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from token
+    where UID = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from token
+    where UID = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.evidence.loginModule.database.entity.token">
+    insert into token (UID, token, reftoken, 
+      tokenGetTime, tokenDeadTime, reftokenDeadTime
+      )
+    values (#{uid,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, #{reftoken,jdbcType=VARCHAR}, 
+      #{tokengettime,jdbcType=TIMESTAMP}, #{tokendeadtime,jdbcType=TIMESTAMP}, #{reftokendeadtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.evidence.loginModule.database.entity.token">
+    insert into token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        UID,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="reftoken != null">
+        reftoken,
+      </if>
+      <if test="tokengettime != null">
+        tokenGetTime,
+      </if>
+      <if test="tokendeadtime != null">
+        tokenDeadTime,
+      </if>
+      <if test="reftokendeadtime != null">
+        reftokenDeadTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="reftoken != null">
+        #{reftoken,jdbcType=VARCHAR},
+      </if>
+      <if test="tokengettime != null">
+        #{tokengettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tokendeadtime != null">
+        #{tokendeadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reftokendeadtime != null">
+        #{reftokendeadtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.evidence.loginModule.database.entity.token">
+    update token
+    <set>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="reftoken != null">
+        reftoken = #{reftoken,jdbcType=VARCHAR},
+      </if>
+      <if test="tokengettime != null">
+        tokenGetTime = #{tokengettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tokendeadtime != null">
+        tokenDeadTime = #{tokendeadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reftokendeadtime != null">
+        reftokenDeadTime = #{reftokendeadtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.evidence.loginModule.database.entity.token">
+    update token
+    set token = #{token,jdbcType=VARCHAR},
+      reftoken = #{reftoken,jdbcType=VARCHAR},
+      tokenGetTime = #{tokengettime,jdbcType=TIMESTAMP},
+      tokenDeadTime = #{tokendeadtime,jdbcType=TIMESTAMP},
+      reftokenDeadTime = #{reftokendeadtime,jdbcType=TIMESTAMP}
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByToken" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from token where token = #{token,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByRefToken" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from token where reftoken = #{reftoken,jdbcType=VARCHAR}
+  </select>
+</mapper>

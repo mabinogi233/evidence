@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.evidence.evidenceModule.database.mapper.evidenceMapper">
+  <resultMap id="BaseResultMap" type="com.project.evidence.evidenceModule.database.entity.evidence">
+    <id column="WID" jdbcType="INTEGER" property="wid" />
+    <result column="Wtext" jdbcType="VARCHAR" property="wtext" />
+    <result column="UID" jdbcType="INTEGER" property="uid" />
+    <result column="insertDate" jdbcType="TIMESTAMP" property="insertdate" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    WID, Wtext, UID, insertDate, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evidence
+    where WID = #{wid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evidence
+    where WID = #{wid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.evidence.evidenceModule.database.entity.evidence">
+    insert into evidence (WID, Wtext, UID, 
+      insertDate, state)
+    values (#{wid,jdbcType=INTEGER}, #{wtext,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, 
+      #{insertdate,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.evidence.evidenceModule.database.entity.evidence">
+    insert into evidence
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        WID,
+      </if>
+      <if test="wtext != null">
+        Wtext,
+      </if>
+      <if test="uid != null">
+        UID,
+      </if>
+      <if test="insertdate != null">
+        insertDate,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="wtext != null">
+        #{wtext,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="insertdate != null">
+        #{insertdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.evidence.evidenceModule.database.entity.evidence">
+    update evidence
+    <set>
+      <if test="wtext != null">
+        Wtext = #{wtext,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        UID = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="insertdate != null">
+        insertDate = #{insertdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WID = #{wid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.evidence.evidenceModule.database.entity.evidence">
+    update evidence
+    set Wtext = #{wtext,jdbcType=VARCHAR},
+      UID = #{uid,jdbcType=INTEGER},
+      insertDate = #{insertdate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR}
+    where WID = #{wid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from evidence where UID = #{uid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByText" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from evidence where Wtext like #{wtext,jdbcType=VARCHAR}
+  </select>
+
+  <select id="maxId" resultType="java.lang.Integer">
+    select max(WID) from evidence
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from evidence
+  </select>
+
+</mapper>

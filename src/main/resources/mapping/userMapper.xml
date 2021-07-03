@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.evidence.userModule.database.mapper.userMapper">
+  <resultMap id="BaseResultMap" type="com.project.evidence.userModule.database.entity.user">
+    <id column="UID" jdbcType="INTEGER" property="uid" />
+    <result column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="idcardNumber" jdbcType="VARCHAR" property="idcardnumber" />
+    <result column="authority" jdbcType="VARCHAR" property="authority" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UID, JID, username, password, truename, idcardNumber, authority, identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from appusers
+    where UID = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from appusers
+    where UID = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.evidence.userModule.database.entity.user">
+    insert into appusers (UID, JID, username, 
+      password, truename, idcardNumber, 
+      authority, identity)
+    values (#{uid,jdbcType=INTEGER}, #{jid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, #{idcardnumber,jdbcType=VARCHAR}, 
+      #{authority,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.evidence.userModule.database.entity.user">
+    insert into appusers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        UID,
+      </if>
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="idcardnumber != null">
+        idcardNumber,
+      </if>
+      <if test="authority != null">
+        authority,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnumber != null">
+        #{idcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null">
+        #{authority,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.evidence.userModule.database.entity.user">
+    update appusers
+    <set>
+      <if test="jid != null">
+        JID = #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnumber != null">
+        idcardNumber = #{idcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null">
+        authority = #{authority,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.evidence.userModule.database.entity.user">
+    update appusers
+    set JID = #{jid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      idcardNumber = #{idcardnumber,jdbcType=VARCHAR},
+      authority = #{authority,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR}
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByJid" parameterType="java.lang.Integer" resultType="com.project.evidence.userModule.database.entity.user">
+    select * from appusers where JID = #{jid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUserName" parameterType="java.lang.String" resultType="com.project.evidence.userModule.database.entity.user">
+    select * from appusers where username = #{userName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByIdCardNumber" parameterType="java.lang.String" resultType="com.project.evidence.userModule.database.entity.user">
+    select * from appusers where idcardNumber = #{idCardNumber,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from appusers
+  </select>
+
+  <select id="maxId" resultType="java.lang.Integer">
+    select max(UID) from appusers
+  </select>
+</mapper>
