@@ -3,7 +3,7 @@ package com.project.evidence.identifyModule;
 import com.project.evidence.identifyModule.database.entity.identify;
 import com.project.evidence.identifyModule.database.entity.identifyProvide;
 import com.project.evidence.identifyModule.database.entity.identifyResult;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class ServiceTest {
+public class ServiceTest {
+
+    public ServiceTest(){}
 
     @Autowired
     Service service;
@@ -25,7 +27,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void deleteIdentifyByPrimaryKey() {
+    public void deleteIdentifyByPrimaryKey() {
         service.deleteIdentifyByPrimaryKey(0);
         System.out.println(service.selectIdentifyByPrimaryKey(0));
     }
@@ -33,7 +35,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void insertIdentify() {
+    public void insertIdentify() {
         identify i = new identify();
         i.setUid(0);
         i.setState("已提交");
@@ -47,7 +49,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void updateIdentifyByPrimaryKey() {
+    public void updateIdentifyByPrimaryKey() {
         identify i = service.selectIdentifyByPrimaryKey(0);
         i.setState("鉴定中");
         service.updateIdentifyByPrimaryKey(i);
@@ -57,7 +59,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void deleteIdentifyProvideByPrimaryKey() {
+    public void deleteIdentifyProvideByPrimaryKey() {
         service.deleteIdentifyProvideByPrimaryKey(0);
         System.out.println(service.selectIdentifyProvideByPrimaryKey(0));
     }
@@ -65,7 +67,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void insertIdentifyProvide() {
+    public void insertIdentifyProvide() {
         identifyProvide provide = new identifyProvide();
         provide.setJid(2);
         provide.setIdentifytext("测试鉴定2");
@@ -76,7 +78,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void updateIdentifyProvideByPrimaryKey() {
+    public void updateIdentifyProvideByPrimaryKey() {
         identifyProvide provide = service.selectIdentifyProvideByPrimaryKey(0);
         provide.setIdentifytext("测试鉴定3");
         service.updateIdentifyProvideByPrimaryKey(provide);
@@ -86,7 +88,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void deleteIdentifyResultByPrimaryKey() {
+    public void deleteIdentifyResultByPrimaryKey() {
         service.deleteIdentifyResultByPrimaryKey(0);
         System.out.println(service.selectIdentifyResultByPrimaryKey(0));
     }
@@ -94,7 +96,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void insertIdentifyResult() {
+    public void insertIdentifyResult() {
         identifyResult r = new identifyResult();
         r.setJid(2);
         r.setBid(1);
@@ -107,7 +109,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void updateIdentifyResultByPrimaryKey() {
+    public void updateIdentifyResultByPrimaryKey() {
         identifyResult r = service.selectIdentifyResultByPrimaryKey(0);
         r.setRtext("更新");
         service.updateIdentifyResultByPrimaryKey(r);
@@ -115,47 +117,47 @@ class ServiceTest {
     }
 
     @Test
-    void selectIdentifyByPrimaryKey() {
+    public void selectIdentifyByPrimaryKey() {
         System.out.println(service.selectIdentifyByPrimaryKey(0).getWid());
     }
 
     @Test
-    void selectIdentifyByWid() {
+    public void selectIdentifyByWid() {
         System.out.println(service.selectIdentifyByWid(0).size());
     }
 
     @Test
-    void selectIdentifyByUid() {
+    public void selectIdentifyByUid() {
         System.out.println(service.selectIdentifyByUid(0).size());
     }
 
     @Test
-    void selectIdentifyByQid() {
+    public void selectIdentifyByQid() {
         System.out.println(service.selectIdentifyByUid(0).size());
     }
 
     @Test
-    void selectIdentifyProvideByJid() {
+    public void selectIdentifyProvideByJid() {
         System.out.println(service.selectIdentifyProvideByJid(2).get(0).getIdentifytext());
     }
 
     @Test
-    void selectIdentifyProvideByPrimaryKey() {
+    public void selectIdentifyProvideByPrimaryKey() {
         System.out.println(service.selectIdentifyProvideByPrimaryKey(0).getIdentifytext());
     }
 
     @Test
-    void selectIdentifyResultByJid() {
+    public void selectIdentifyResultByJid() {
         System.out.println(service.selectIdentifyResultByJid(2).get(0).getRtext());
     }
 
     @Test
-    void selectIdentifyResultByPrimaryKey() {
+    public void selectIdentifyResultByPrimaryKey() {
         System.out.println(service.selectIdentifyResultByPrimaryKey(0).getRtext());
     }
 
     @Test
-    void getAllProvide() {
+    public void getAllProvide() {
         System.out.println(service.getAllProvide().get(0).getIdentifytext());
     }
 }

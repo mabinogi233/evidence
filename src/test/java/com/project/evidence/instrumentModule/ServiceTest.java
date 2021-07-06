@@ -1,7 +1,7 @@
 package com.project.evidence.instrumentModule;
 
 import com.project.evidence.instrumentModule.database.entity.instrument;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class ServiceTest {
+public class ServiceTest {
+
+    public ServiceTest(){}
 
     @Autowired
     Service service;
@@ -23,7 +25,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void deleteByPrimaryKey() {
+    public void deleteByPrimaryKey() {
         service.deleteByPrimaryKey(0);
         System.out.println(service.selectByYid(0));
     }
@@ -31,7 +33,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         instrument i = new instrument();
         i.setState("正常");
         i.setInsertdate(new Date());
@@ -44,7 +46,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void updateByPrimaryKey() {
+    public void updateByPrimaryKey() {
         instrument i = service.selectByYid(0);
         i.setYtext("更新测试");
         service.updateByPrimaryKey(i);
@@ -52,12 +54,12 @@ class ServiceTest {
     }
 
     @Test
-    void selectByJid() {
+    public void selectByJid() {
         System.out.println(service.selectByJid(2).get(0).getYtext());
     }
 
     @Test
-    void selectByYid() {
+    public void selectByYid() {
         System.out.println(service.selectByYid(0).getYtext());
     }
 }

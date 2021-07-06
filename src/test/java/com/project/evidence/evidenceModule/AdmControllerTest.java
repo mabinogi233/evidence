@@ -1,6 +1,6 @@
 package com.project.evidence.evidenceModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class AdmControllerTest {
+public class AdmControllerTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -33,8 +33,10 @@ class AdmControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    public AdmControllerTest(){}
+
     @Test
-    void selectAll() {
+    public void selectAll() {
         String path = "/evidenceAdm/selectAll";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -42,7 +44,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByUid() {
+    public void selectByUid() {
         String path = "/evidenceAdm/selectByUid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -51,7 +53,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByText() {
+    public void selectByText() {
         String path = "/evidenceAdm/selectByText";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -60,7 +62,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByWid() {
+    public void selectByWid() {
         String path = "/evidenceAdm/selectByWid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -71,7 +73,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void update() {
+    public void update() {
         String path = "/evidenceAdm/update";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -84,7 +86,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         String path = "/evidenceAdm/insert";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -96,7 +98,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void delete() {
+    public void delete() {
         String path = "/evidenceAdm/delete";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");

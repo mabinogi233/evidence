@@ -3,19 +3,23 @@ package com.project.evidence.userModule;
 
 import com.alibaba.fastjson.JSONObject;
 import com.project.evidence.authorityModule.Authority;
+import com.project.evidence.authorityModule.NotHandle;
 import com.project.evidence.organizationModule.database.entity.organization;
 import com.project.evidence.userModule.database.entity.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller("userController")
+@CrossOrigin
 @RequestMapping(value = "/userController",produces="text/html;charset=utf-8")
 public class UserController {
 
@@ -37,6 +41,7 @@ public class UserController {
      * @param token
      * @return
      */
+
     @RequestMapping("/selectByUid")
     @ResponseBody
     public String selectByUID(@RequestParam("token")String token){
@@ -92,6 +97,7 @@ public class UserController {
      */
     @RequestMapping("/selectByIdCardNumber")
     @ResponseBody
+    @NotHandle
     public String selectByidcardNumber(@RequestParam("idcardNumber")String idcardNumber){
         Map<String,Object> resultMap = new HashMap<>();
         user u = userService.selectByIdcardNumber(idcardNumber);

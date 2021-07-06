@@ -18,6 +18,7 @@ import java.util.Map;
  * 机构管理，仅管理员可用
  */
 @Controller("organizationController")
+@CrossOrigin
 @RequestMapping(value = "/organization",produces="text/html;charset=utf-8")
 public class AdmController {
 

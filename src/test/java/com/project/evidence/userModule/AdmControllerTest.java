@@ -2,7 +2,7 @@ package com.project.evidence.userModule;
 
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,7 +30,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class AdmControllerTest {
+public class AdmControllerTest {
+
+    public AdmControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -40,7 +42,7 @@ class AdmControllerTest {
 
 
     @Test
-    void selectAll() {
+    public void selectAll() {
         String path = "/userAdmController/selectAll";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -48,7 +50,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByUID() {
+    public void selectByUID() {
         String path = "/userAdmController/selectByUid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -57,7 +59,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByUserName() {
+    public void selectByUserName() {
         String path = "/userAdmController/selectByUserName";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -66,7 +68,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByidcardNumber() {
+    public void selectByidcardNumber() {
         String path = "/userAdmController/selectByIdCardNumber";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -75,7 +77,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void update() {
+    public void update() {
         String path = "/userAdmController/update";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -93,7 +95,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         String path = "/userAdmController/insert";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -110,7 +112,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void delete() {
+    public void delete() {
         String path = "/userAdmController/delete";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");

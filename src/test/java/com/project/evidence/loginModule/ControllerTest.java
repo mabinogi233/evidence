@@ -1,6 +1,6 @@
 package com.project.evidence.loginModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class ControllerTest {
+public class ControllerTest {
+
+    public ControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -34,7 +36,7 @@ class ControllerTest {
 
     @Test
 
-    void login() {
+    public void login() {
         String path = "/loginController/login";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("username", "司法人员A");
@@ -45,7 +47,7 @@ class ControllerTest {
     @Test
     @Rollback
     @Transactional
-    void unlogin() {
+    public void unlogin() {
         String path = "/loginController/unLogin";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");

@@ -1,6 +1,6 @@
 package com.project.evidence.organizationModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class AdmControllerTest {
+public class AdmControllerTest {
+
+    public AdmControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -33,7 +35,7 @@ class AdmControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void selectAll() {
+    public void selectAll() {
         String path = "/organization/selectAll";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -41,7 +43,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByJID() {
+    public void selectByJID() {
         String path = "/organization/select";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -52,7 +54,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void update() {
+    public void update() {
         String path = "/organization/update";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -65,7 +67,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         String path = "/organization/insert";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -77,7 +79,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void delete() {
+    public void delete() {
         String path = "/organization/delete";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");

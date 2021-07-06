@@ -1,6 +1,6 @@
 package com.project.evidence.identifyModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -25,7 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest {
+public class UserControllerTest {
+
+    public UserControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -36,7 +38,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void selectAllIndentifyProvide() {
+    public void selectAllIndentifyProvide() {
         String path = "/identifyUserController/selectAllIndentifyProvide";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");
@@ -46,7 +48,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insertIdentify() {
+    public void insertIdentify() {
         String path = "/identifyUserController/insertIdentify";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");
@@ -58,7 +60,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void selectIdentifyFromJid() {
+    public void selectIdentifyFromJid() {
         String path = "/identifyUserController/selectIdentifyFromJid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -68,7 +70,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void setIdentifyState() {
+    public void setIdentifyState() {
         String path = "/identifyUserController/setIdentifyState";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -80,7 +82,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insertIdentifyResult() {
+    public void insertIdentifyResult() {
         String path = "/identifyUserController/insertIdentifyResult";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -92,7 +94,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void selectIdentifyByUid() {
+    public void selectIdentifyByUid() {
         String path = "/identifyUserController/selectIdentifyByUid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");
@@ -102,7 +104,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void selectIdentifyByUidSJid() {
+    public void selectIdentifyByUidSJid() {
         String path = "/identifyUserController/selectIdentifyByJidFromUid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");
@@ -112,7 +114,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void selectIdentifyResultByJid() {
+    public void selectIdentifyResultByJid() {
         String path = "/identifyUserController/selectIdentifyResultByJid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -122,7 +124,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void selectIdentifyResultByBid() {
+    public void selectIdentifyResultByBid() {
         String path = "/identifyUserController/selectIdentifyResultByBid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -131,7 +133,7 @@ class UserControllerTest {
     }
 
     @Test
-    void insertIdentifyProvide() {
+    public void insertIdentifyProvide() {
         String path = "/identifyUserController/insertIdentifyProvide";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -142,7 +144,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void deleteIdentifyProvide() {
+    public void deleteIdentifyProvide() {
         String path = "/identifyUserController/deleteIdentifyProvide";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
@@ -153,7 +155,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void updateIdentifyProvide() {
+    public void updateIdentifyProvide() {
         String path = "/identifyUserController/updateIdentifyProvide";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");

@@ -1,6 +1,6 @@
 package com.project.evidence.instrumentModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class AdmControllerTest {
+public class AdmControllerTest {
+
+    public AdmControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -33,7 +35,7 @@ class AdmControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void selectByUid() {
+    public void selectByUid() {
         String path = "/instrumentAdm/selectByJid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -42,7 +44,7 @@ class AdmControllerTest {
     }
 
     @Test
-    void selectByYid() {
+    public void selectByYid() {
         String path = "/instrumentAdm/selectByYid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -53,7 +55,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void update() {
+    public void update() {
         String path = "/instrumentAdm/update";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -66,7 +68,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         String path = "/instrumentAdm/insert";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -78,7 +80,7 @@ class AdmControllerTest {
     @Test
     @Rollback
     @Transactional
-    void delete() {
+    public void delete() {
         String path = "/instrumentAdm/delete";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");

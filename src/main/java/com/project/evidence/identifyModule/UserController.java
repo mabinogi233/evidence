@@ -9,6 +9,7 @@ import com.project.evidence.userModule.database.entity.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.*;
 
 @Controller("identifyUserController")
+@CrossOrigin
 @RequestMapping(value = "/identifyUserController",produces="text/html;charset=utf-8")
 public class UserController {
 

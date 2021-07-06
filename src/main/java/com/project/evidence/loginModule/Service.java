@@ -61,7 +61,11 @@ public class Service {
                         t.setTokendeadtime(tokenDeadTime);
                         t.setReftokendeadtime(refTokenDeadTime);
                         t.setTokengettime(tokenGetTime);
-                        mapper.insert(t);
+                        if(mapper.selectByPrimaryKey(uid)!=null){
+                            mapper.updateByPrimaryKey(t);
+                        }else {
+                            mapper.insert(t);
+                        }
                         return uid;
                     }
                 }

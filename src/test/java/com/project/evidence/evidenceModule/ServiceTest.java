@@ -1,7 +1,7 @@
 package com.project.evidence.evidenceModule;
 
 import com.project.evidence.evidenceModule.database.entity.evidence;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,14 +16,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class ServiceTest {
+public class ServiceTest {
+
+    public ServiceTest(){}
+
     @Autowired
     Service service;
 
     @Test
     @Rollback
     @Transactional
-    void deleteByPrimaryKey() {
+    public void deleteByPrimaryKey() {
         service.deleteByPrimaryKey(0);
         System.out.println(service.selectByWid(0));
     }
@@ -31,7 +34,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         evidence e = new evidence();
         e.setUid(0);
         e.setState("正常");
@@ -44,7 +47,7 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void updateByPrimaryKey() {
+    public void updateByPrimaryKey() {
         evidence e = service.selectByWid(0);
         e.setWtext("单元测试");
         e.setInsertdate(new Date());
@@ -53,22 +56,22 @@ class ServiceTest {
     }
 
     @Test
-    void selectByUid() {
+    public void selectByUid() {
         System.out.println(service.selectByUid(0).get(0).getWtext());
     }
 
     @Test
-    void selectByWid() {
+    public void selectByWid() {
         System.out.println(service.selectByWid(0).getWtext());
     }
 
     @Test
-    void selectByText() {
+    public void selectByText() {
         System.out.println(service.selectByText("测试").get(0).getWtext());
     }
 
     @Test
-    void selectAll() {
+    public void selectAll() {
         System.out.println(service.selectAll().get(0).getWtext());
     }
 }

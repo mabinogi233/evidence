@@ -5,7 +5,8 @@ public enum ErrorCode {
 
     TokenError("token无效","000"),
     RoleError("不满足身份","001"),
-    AuthorityError("不满足权限","002");
+    AuthorityError("不满足权限","002"),
+    SystemError("系统错误","003");
 
     String text;
 

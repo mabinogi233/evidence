@@ -1,6 +1,6 @@
 package com.project.evidence.evidenceModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest {
+public class UserControllerTest {
+
+    public UserControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -33,7 +35,7 @@ class UserControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void selectByUid() {
+    public void selectByUid() {
         String path = "/evidenceUser/selectByUid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -41,16 +43,16 @@ class UserControllerTest {
     }
 
     @Test
-    void selectByText() {
+    public void selectByText() {
         String path = "/evidenceUser/selectByText";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-        params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");
+        params.add("token", "AbfgMb/pvQytZRCZrNZTRA==");
         params.add("text", "测试");
         this.postTest(params,path);
     }
 
     @Test
-    void selectByWid() {
+    public void selectByWid() {
         String path = "/evidenceUser/selectByWid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");
@@ -61,7 +63,7 @@ class UserControllerTest {
     @Test
     @Rollback
     @Transactional
-    void insert() {
+    public void insert() {
         String path = "/evidenceUser/insert";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "vSHptiO9at/RB4SWPL5dvQ==");

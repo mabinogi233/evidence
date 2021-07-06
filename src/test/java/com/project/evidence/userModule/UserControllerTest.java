@@ -1,6 +1,6 @@
 package com.project.evidence.userModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest {
+public class UserControllerTest {
+
+    public UserControllerTest(){}
 
     @Autowired
     private WebApplicationContext context;
@@ -33,7 +35,7 @@ class UserControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void selectByUID() {
+    public void selectByUID() {
         String path = "/userController/selectByUid";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -41,7 +43,7 @@ class UserControllerTest {
     }
 
     @Test
-    void selectOrganization() {
+    public void selectOrganization() {
         String path = "/userController/selectOrganization";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");
@@ -49,7 +51,7 @@ class UserControllerTest {
     }
 
     @Test
-    void selectByidcardNumber() {
+    public void selectByidcardNumber() {
         String path = "/userController/selectByIdCardNumber";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("idcardNumber", "130104200005012411");
@@ -59,7 +61,7 @@ class UserControllerTest {
     @Test
     @Transactional
     @Rollback
-    void update() {
+    public void update() {
         String path = "/userController/update";
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("token", "Rp6npIeiQ93mSFpsmeg7gA==");

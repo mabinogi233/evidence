@@ -2,10 +2,12 @@ package com.project.evidence.loginModule;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.project.evidence.authorityModule.NotHandle;
 import com.project.evidence.loginModule.database.entity.token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @org.springframework.stereotype.Controller("loginController")
+@CrossOrigin
 @RequestMapping(value = "/loginController",produces="text/html;charset=utf-8")
 public class Controller {
 
@@ -31,6 +34,7 @@ public class Controller {
      */
     @RequestMapping("/login")
     @ResponseBody
+    @NotHandle
     public String login(@RequestParam("username") String userName,
                         @RequestParam("password") String password){
         int uid = loginService.login(userName,password);

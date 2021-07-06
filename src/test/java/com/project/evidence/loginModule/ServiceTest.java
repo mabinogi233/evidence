@@ -1,6 +1,6 @@
 package com.project.evidence.loginModule;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class ServiceTest {
+public class ServiceTest {
+
+    public ServiceTest(){}
 
     @Autowired
     Service service;
@@ -20,14 +22,14 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void login() {
+    public void login() {
         System.out.println(service.login("ceshi","123456"));
     }
 
     @Test
     @Rollback
     @Transactional
-    void unlogin() {
+    public void unlogin() {
         System.out.println(service.unlogin(0));
         System.out.println(service.selectByUid(0));
     }
@@ -35,21 +37,21 @@ class ServiceTest {
     @Test
     @Rollback
     @Transactional
-    void checkToken() {
+    public void checkToken() {
         System.out.println(service.checkToken("Rp6npIeiQ93mSFpsmeg7gA=="));
     }
 
     @Test
     @Rollback
     @Transactional
-    void refToken() {
+    public void refToken() {
         System.out.println(service.refToken("PC2nEJIAklEfDU+43Kyicg==").equals("Rp6npIeiQ93mSFpsmeg7gA=="));
     }
 
     @Test
     @Rollback
     @Transactional
-    void selectByUid() {
+    public void selectByUid() {
         System.out.println(service.selectByUid(0).getToken());
     }
 }

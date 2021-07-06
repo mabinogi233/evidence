@@ -1,18 +1,15 @@
 package com.project.evidence.authorityModule;
 
+
 import java.lang.annotation.*;
 
-//权限与身份拦截
+
+/**
+ * 无需拦截，配置后的方法无需验证token与authority
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Authority {
-
+public @interface NotHandle {
     String[] value() default {};
-    //身份
-    String[] roles() default {};
-    //权限
-    String[] authorities() default {};
-
 }
-
