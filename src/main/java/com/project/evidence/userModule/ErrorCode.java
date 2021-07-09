@@ -19,7 +19,9 @@ public enum ErrorCode {
     AuthorityError("权限错误","212"),
     RoleError("身份错误","213"),
     HasUserName("用户名重复","214"),
-    UpdateFixItem("修改了不可修改的参数值","215");
+    UpdateFixItem("修改了不可修改的参数值","215"),
+    UpdateSuccessButNotUNLogin("仅修改用户名","216"),
+    NotNeedUpdate("无需修改","217");
 
     String text;
 

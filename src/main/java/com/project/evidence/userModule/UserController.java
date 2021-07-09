@@ -141,16 +141,12 @@ public class UserController {
             if(u.getJid()==jid && u.getTruename().equals(truename) &&
                u.getIdcardnumber().equals(idcardNumber) && u.getAuthority().equals(authority) &&
                u.getIdentity().equals(role)){
-                if(userService.selectByUserName(username)==null){
-                    if(!u.getPassword().equals(password)){
-                        //修改密码后下线
-                        loginService.unlogin(u.getUid());
-                    }
+                if(!username.equals(u.getUsername()) && password.equals(u.getPassword())){
+                    //仅修改用户名,不修改密码，无需unlogin
                     u.setUsername(username);
-                    u.setPassword(password);
                     if(userService.updateByPrimaryKey(u)){
                         //成功
-                        resultMap.put("code",ErrorCode.UpdateSuccess.code);
+                        resultMap.put("code",ErrorCode.UpdateSuccessButNotUNLogin.code);
                         return JSONObject.toJSONString(resultMap);
                     }else{
                         //失败
@@ -158,9 +154,32 @@ public class UserController {
                         return JSONObject.toJSONString(resultMap);
                     }
                 }else{
-                    //用户名重复
-                    resultMap.put("code",ErrorCode.HasUserName.code);
-                    return JSONObject.toJSONString(resultMap);
+                    //用户名唯一性验证
+                    if(username.equals(u.getUsername())||userService.selectByUserName(username)==null){
+                        if(password.equals(u.getPassword())){
+                            //什么都不修改
+                            resultMap.put("code",ErrorCode.NotNeedUpdate.code);
+                            return JSONObject.toJSONString(resultMap);
+                        }else{
+                            //修改了密码
+                            loginService.unlogin(u.getUid());
+                            u.setUsername(username);
+                            u.setPassword(password);
+                            if(userService.updateByPrimaryKey(u)){
+                                //成功
+                                resultMap.put("code",ErrorCode.UpdateSuccess.code);
+                                return JSONObject.toJSONString(resultMap);
+                            }else{
+                                //失败
+                                resultMap.put("code",ErrorCode.UpdateFail.code);
+                                return JSONObject.toJSONString(resultMap);
+                            }
+                        }
+                    }else{
+                        //用户名重复
+                        resultMap.put("code",ErrorCode.HasUserName.code);
+                        return JSONObject.toJSONString(resultMap);
+                    }
                 }
             }else{
                 //修改了不可修改的参数值

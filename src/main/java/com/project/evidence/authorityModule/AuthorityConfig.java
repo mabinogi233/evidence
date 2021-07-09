@@ -14,6 +14,10 @@ public class AuthorityConfig extends WebMvcConfigurationSupport {
     @Autowired
     private AuthorityHandle authorityHandle;
 
+    /**
+     * 拦截全部路径的请求
+     * @param registry
+     */
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(this.authorityHandle).addPathPatterns("/**");

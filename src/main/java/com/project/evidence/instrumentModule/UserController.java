@@ -168,7 +168,7 @@ public class UserController {
     }
 
     /**
-     * 删除物证
+     * 删除仪器
      * 返回json，{code:xxx}
      * @param token
      * @param yid

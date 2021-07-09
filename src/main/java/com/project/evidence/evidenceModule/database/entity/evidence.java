@@ -1,5 +1,7 @@
 package com.project.evidence.evidenceModule.database.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class evidence {
@@ -9,6 +11,7 @@ public class evidence {
 
     private Integer uid;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date insertdate;
 
     private String state;

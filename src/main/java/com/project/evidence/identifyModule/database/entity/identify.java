@@ -1,5 +1,8 @@
 package com.project.evidence.identifyModule.database.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class identify {
@@ -7,6 +10,7 @@ public class identify {
 
     private Integer wid;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date submitdate;
 
     private Integer uid;

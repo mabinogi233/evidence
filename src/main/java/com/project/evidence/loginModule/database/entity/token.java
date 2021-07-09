@@ -1,5 +1,7 @@
 package com.project.evidence.loginModule.database.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class token {
@@ -9,10 +11,13 @@ public class token {
 
     private String reftoken;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date tokengettime;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date tokendeadtime;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date reftokendeadtime;
 
     public Integer getUid() {

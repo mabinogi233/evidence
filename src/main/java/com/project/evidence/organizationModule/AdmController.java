@@ -42,7 +42,7 @@ public class AdmController {
             resultMap.put("item",organizations);
             return JSONObject.toJSONString(resultMap);
         }else{
-            resultMap.put("code",ErrorCode.SelectSuccess.code);
+            resultMap.put("code",ErrorCode.SelectFail.code);
             resultMap.put("item","");
             return JSONObject.toJSONString(resultMap);
         }

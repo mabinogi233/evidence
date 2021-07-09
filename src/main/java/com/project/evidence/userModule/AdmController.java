@@ -60,6 +60,7 @@ public class AdmController {
      */
     @RequestMapping("/selectByUid")
     @ResponseBody
+    @Authority(roles = {"系统管理员"},authorities  = {"低","中","高"})
     public String selectByUID(@RequestParam("token")String token,
                               @RequestParam("uid")int uid){
         Map<String,Object> resultMap = new HashMap<>();
@@ -161,6 +162,7 @@ public class AdmController {
                     ||role.equals("鉴定机构人员")||role.equals("系统管理员")){
                         if(!(role.equals("系统管理员") && authority.equals("高"))) {
                             //插入
+                            loginService.unlogin(uid);
                             user u = new user();
                             u.setUid(uid);
                             u.setJid(jid);
@@ -234,7 +236,7 @@ public class AdmController {
                 && organizationService.selectByPrimaryKey(jid)!=null) {
             if(UserUtils.checkIdCardNumber(idcardNumber)){
                 if(authority.equals("低")||authority.equals("中")||authority.equals("高")){
-                    if(role.equals("消防员")||role.equals("司法人员")||role.equals("技术服务人员")
+                    if(role.equals("消防人员")||role.equals("司法人员")||role.equals("技术服务人员")
                             ||role.equals("鉴定机构人员")||role.equals("系统管理员")){
                         //插入
                         user u = new user();
@@ -288,7 +290,7 @@ public class AdmController {
                          @RequestParam("uid")int uid){
         Map<String,Object> resultMap = new HashMap<>();
         if(userService.selectByPrimaryKey(uid)!=null &&
-                !(userService.selectByPrimaryKey(uid).getIdentity().equals("高级管理员") &&
+                !(userService.selectByPrimaryKey(uid).getIdentity().equals("系统管理员") &&
                 userService.selectByPrimaryKey(uid).getAuthority().equals("高"))) {
             if(userService.deleteByPrimaryKey(uid)){
                 //成功

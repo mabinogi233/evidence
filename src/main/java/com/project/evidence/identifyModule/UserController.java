@@ -8,6 +8,7 @@ import com.project.evidence.identifyModule.database.entity.identifyResult;
 import com.project.evidence.userModule.database.entity.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @Controller("identifyUserController")
 @CrossOrigin
@@ -30,12 +34,16 @@ public class UserController {
     com.project.evidence.loginModule.Service loginService;
 
     @Autowired
-    @Qualifier("identifyService")
-    com.project.evidence.identifyModule.Service identifyService;
+    @Qualifier("identifyUserFastService")
+    UserFastService identifyService;
 
     @Autowired
     @Qualifier("organizationService")
     com.project.evidence.organizationModule.Service organizationService;
+
+    @Qualifier("selectThreadPool")
+    @Autowired
+    ThreadPoolTaskExecutor executor;
 
     /**
      * 查询全部鉴定清单
@@ -44,9 +52,9 @@ public class UserController {
      * @return
      */
     @Authority(authorities = {"低","中","高"},roles = {"消防人员","司法人员","技术服务人员","鉴定机构人员"})
-    @RequestMapping("/selectAllIndentifyProvide")
+    @RequestMapping("/selectAllIdentifyProvide")
     @ResponseBody
-    public String selectAllIndentifyProvide(@RequestParam("token") String token){
+    public String selectAllIdentifyProvide(@RequestParam("token") String token){
         List<identifyProvide> i = identifyService.getAllProvide();
         Map<String,Object> resultMap = new HashMap<>();
         if(i!=null && i.size()!=0){
@@ -119,21 +127,12 @@ public class UserController {
             return JSONObject.toJSONString(resultMap);
         }
         int jid = u.getJid();
-        List<identifyProvide> p = identifyService.selectIdentifyProvideByJid(jid);
-        if(p!=null) {
-            List<identify> i = new ArrayList<>();
-            for(identifyProvide pi :p){
-                i.addAll(identifyService.selectIdentifyByQid(pi.getQid()));
-            }
-            if (i.size()>0) {
-                resultMap.put("code", ErrorCode.SelectSuccess.code);
-                resultMap.put("item", i);
-                return JSONObject.toJSONString(resultMap);
-            } else {
-                resultMap.put("code", ErrorCode.SelectNull.code);
-                resultMap.put("item", "");
-                return JSONObject.toJSONString(resultMap);
-            }
+        //多线程异步查询
+        List<identify> identifies = identifyService.selectIdentifyFromJid(jid);
+        if(identifies!=null && identifies.size()>0){
+            resultMap.put("code", ErrorCode.SelectSuccess.code);
+            resultMap.put("item", identifies);
+            return JSONObject.toJSONString(resultMap);
         }else{
             resultMap.put("code", ErrorCode.SelectNull.code);
             resultMap.put("item", "");
@@ -264,36 +263,23 @@ public class UserController {
     @ResponseBody
     public String selectIdentifyByUidSJid(@RequestParam("token") String token){
         int uid = loginService.checkToken(token);
-        user u = userService.selectByPrimaryKey(uid);
         Map<String,Object> resultMap = new HashMap<>();
-        if(u!=null && u.getJid()!=null) {
-            List<user> users = userService.selectByJid(u.getJid());
-            List<identify> identifies = new ArrayList<>();
-            if(users!=null) {
-                for (user us : users) {
-                    List<identify> identifies1 = identifyService.selectIdentifyByUid(us.getUid());
-                    if(identifies1!=null){
-                        identifies.addAll(identifies1);
-                    }
-                }
-                if(identifies.size()==0){
-                    resultMap.put("code",ErrorCode.SelectNull.code);
-                    resultMap.put("item","");
-                    return JSONObject.toJSONString(resultMap);
-                }else {
-                    resultMap.put("code",ErrorCode.SelectSuccess.code);
-                    resultMap.put("item",identifies);
-                    return JSONObject.toJSONString(resultMap);
-                }
-            }else{
-                resultMap.put("code",ErrorCode.SelectNull.code);
-                resultMap.put("item","");
+        if(uid==-1){
+            //用户异常
+            resultMap.put("code", ErrorCode.UserError.code);
+            resultMap.put("item", "");
+            return JSONObject.toJSONString(resultMap);
+        }else{
+            List<identify> identifies = identifyService.selectIdentifyByUidSJid(uid);
+            if (identifies==null || identifies.size() == 0) {
+                resultMap.put("code", ErrorCode.SelectNull.code);
+                resultMap.put("item", "");
+                return JSONObject.toJSONString(resultMap);
+            } else {
+                resultMap.put("code", ErrorCode.SelectSuccess.code);
+                resultMap.put("item", identifies);
                 return JSONObject.toJSONString(resultMap);
             }
-        }else{
-            resultMap.put("code",ErrorCode.UserError.code);
-            resultMap.put("item","");
-            return JSONObject.toJSONString(resultMap);
         }
     }
 
@@ -327,6 +313,39 @@ public class UserController {
             return JSONObject.toJSONString(resultMap);
         }
     }
+
+    /**
+     * 查询token对应的用户提交的报表的全部结果
+     * 返回json {code='xxx',item=[{bid:'xxx',jid:'xxx',rText:'xxx',provideDate:'xxx'}]}
+     * @param token
+     * @return
+     */
+    @Authority(authorities = {"低","中","高"},roles = {"消防人员","司法人员","技术服务人员","系统管理员"})
+    @RequestMapping("/selectIdentifyResultByToken")
+    @ResponseBody
+    public String selectIdentifyResultByToken(@RequestParam("token") String token){
+        int uid = loginService.checkToken(token);
+        Map<String,Object> resultMap = new HashMap<>();
+        if(uid!=-1) {
+            List<identifyResult> results = identifyService.selectIdentifyResultByUid(uid);
+            if(results==null || results.size()==0){
+                //查询为空
+                resultMap.put("code", ErrorCode.SelectNull.code);
+                resultMap.put("item", "");
+                return JSONObject.toJSONString(resultMap);
+            }else{
+                resultMap.put("code", ErrorCode.SelectSuccess.code);
+                resultMap.put("item", results);
+                return JSONObject.toJSONString(resultMap);
+            }
+        }else{
+            //token异常
+            resultMap.put("code", ErrorCode.UserError.code);
+            resultMap.put("item", "");
+            return JSONObject.toJSONString(resultMap);
+        }
+    }
+
 
     /**
      * 查询报表bid的结果
