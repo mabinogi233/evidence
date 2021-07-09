@@ -1,0 +1,71 @@
+2021-07-08 21:08:10.475 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 24056 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:08:10.478 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:08:11.563 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:08:11.791 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1278 ms
+2021-07-08 21:08:12.994 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-08 21:08:13.009 [main] INFO  com.project.evidence.EvidenceApplication - Started EvidenceApplication in 3.105 seconds (JVM running for 4.492)
+2021-07-08 21:08:16.640 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-08 21:08:16.643 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-07-08 21:08:16.690 [http-nio-8081-exec-1] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：login,参数为：[test1, 123456]
+2021-07-08 21:08:16.698 [http-nio-8081-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-08 21:08:16.791 [http-nio-8081-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-08 21:08:16.888 [http-nio-8081-exec-1] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：login,参数为：[test1, 123456],目标方法执行结果为：{"code":"600","refToken":"3nog03+1dXmFxF4OCtVRTQ==","token":"xX4ZfgNU1qtWA11gCgAayw=="}
+2021-07-08 21:08:30.112 [http-nio-8081-exec-4] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：login,参数为：[test1, 123456]
+2021-07-08 21:08:30.152 [http-nio-8081-exec-4] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：login,参数为：[test1, 123456],目标方法执行结果为：{"code":"600","refToken":"eQ2+RHFkgnfIuYu8H6t0Ag==","token":"XLGF5vQeAIGfQOrwOGyTaw=="}
+2021-07-08 21:08:43.973 [http-nio-8081-exec-7] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：login,参数为：[test1, 123456]
+2021-07-08 21:08:43.989 [http-nio-8081-exec-7] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：login,参数为：[test1, 123456],目标方法执行结果为：{"code":"600","refToken":"n149I2XL8oxyOIUrIuhqww==","token":"0i/z9+SkAFPUucwuSLwTkA=="}
+2021-07-08 21:13:07.329 [http-nio-8081-exec-10] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：login,参数为：[test1, 123456]
+2021-07-08 21:13:07.348 [http-nio-8081-exec-10] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：login,参数为：[test1, 123456],目标方法执行结果为：{"code":"600","refToken":"jgmQqnnBIEeZgTRdUKwxsA==","token":"2dO2Y1qItkEPw5gPlyKosw=="}
+2021-07-08 21:13:53.377 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 31820 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:13:53.379 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:13:55.047 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:13:55.196 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1776 ms
+2021-07-08 21:13:56.502 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-08 21:13:56.516 [main] INFO  com.project.evidence.EvidenceApplication - Started EvidenceApplication in 3.698 seconds (JVM running for 5.001)
+2021-07-08 21:14:01.944 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 12672 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:14:01.961 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:14:03.138 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:14:03.252 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1203 ms
+2021-07-08 21:14:04.500 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-08 21:14:04.510 [main] INFO  com.project.evidence.EvidenceApplication - Started EvidenceApplication in 3.066 seconds (JVM running for 4.17)
+2021-07-08 21:15:21.787 [http-nio-8081-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-08 21:15:21.789 [http-nio-8081-exec-3] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-07-08 21:15:36.120 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 31556 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:15:36.123 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:15:37.150 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:15:40.902 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 22372 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:15:40.905 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:15:41.899 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:15:42.032 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1074 ms
+2021-07-08 21:15:42.830 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-08 21:15:42.838 [main] INFO  com.project.evidence.EvidenceApplication - Started EvidenceApplication in 2.355 seconds (JVM running for 3.417)
+2021-07-08 21:15:49.052 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-08 21:15:49.054 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2021-07-08 21:15:49.095 [http-nio-8081-exec-1] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：getLog,参数为：[]
+2021-07-08 21:15:49.105 [http-nio-8081-exec-1] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：getLog,参数为：[],目标方法执行结果为：null
+2021-07-08 21:15:50.641 [http-nio-8081-exec-2] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：getLog,参数为：[]
+2021-07-08 21:15:50.641 [http-nio-8081-exec-2] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：getLog,参数为：[],目标方法执行结果为：null
+2021-07-08 21:28:07.823 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 12904 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:28:07.827 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:28:08.865 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:28:08.975 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1089 ms
+2021-07-08 21:28:10.041 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-08 21:28:10.055 [main] INFO  com.project.evidence.EvidenceApplication - Started EvidenceApplication in 2.7 seconds (JVM running for 3.725)
+2021-07-08 21:28:54.787 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-08 21:28:54.790 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-07-08 21:29:02.645 [http-nio-8081-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-08 21:29:02.889 [http-nio-8081-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-08 21:29:24.878 [main] INFO  com.project.evidence.EvidenceApplication - Starting EvidenceApplication using Java 11.0.4 on LAPTOP-CS83KS55 with PID 9588 (D:\codes\codes\evidence\target\classes started by LiuWenze in D:\codes\codes\evidence)
+2021-07-08 21:29:24.881 [main] INFO  com.project.evidence.EvidenceApplication - No active profile set, falling back to default profiles: default
+2021-07-08 21:29:27.529 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-07-08 21:29:27.705 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2758 ms
+2021-07-08 21:29:29.228 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-08 21:29:29.237 [main] INFO  com.project.evidence.EvidenceApplication - Started EvidenceApplication in 4.828 seconds (JVM running for 6.192)
+2021-07-08 21:29:30.205 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-07-08 21:29:30.207 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-07-08 21:29:30.256 [http-nio-8081-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-07-08 21:29:30.430 [http-nio-8081-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-07-08 21:29:30.592 [http-nio-8081-exec-1] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：getLog,参数为：[Rp6npIeiQ93mSFpsmeg7gA==]
+2021-07-08 21:29:31.594 [http-nio-8081-exec-1] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：getLog,参数为：[Rp6npIeiQ93mSFpsmeg7gA==],目标方法执行结果为：{"item":["http://lwz-evidence.oss-cn-beijing.aliyuncs.com/D%3A%5Ccodes%5Ccodes%5Cevidence%5Csrc%5Cmain%5Cresources%5Clog%5CSpringBoot-Slf4j_2021-07-08.log?Expires=1657286971&OSSAccessKeyId=LTAI5tJt5ZSZKMjyuaC2pHGt&Signature=qRAC5PlcSbtLcHSlGmIMAlrDif0%3D"],"code":"GET_LOG_SUCCESS"}
+2021-07-08 21:29:32.235 [http-nio-8081-exec-2] INFO  com.project.evidence.logModule.logAspectJ - 调用前连接点方法为：getLog,参数为：[Rp6npIeiQ93mSFpsmeg7gA==]
+2021-07-08 21:29:32.360 [http-nio-8081-exec-2] INFO  com.project.evidence.logModule.logAspectJ - 连接点方法为：getLog,参数为：[Rp6npIeiQ93mSFpsmeg7gA==],目标方法执行结果为：{"item":["http://lwz-evidence.oss-cn-beijing.aliyuncs.com/D%3A%5Ccodes%5Ccodes%5Cevidence%5Csrc%5Cmain%5Cresources%5Clog%5CSpringBoot-Slf4j_2021-07-08.log?Expires=1657286972&OSSAccessKeyId=LTAI5tJt5ZSZKMjyuaC2pHGt&Signature=s903ctiYU81pAXJgKhOlerlersU%3D"],"code":"GET_LOG_SUCCESS"}
